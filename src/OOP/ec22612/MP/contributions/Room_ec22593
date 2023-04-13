@@ -1,0 +1,159 @@
+import java.util.Random;
+class Room_ec22593 extends Room{
+    final char[] yesNoArray={'y','n'};
+    final String yesNoDescription="/n y for yes n for no";
+    final Item giftBag=new Item("Gift bag");
+    boolean lightsDimmed;
+    public Direction visit(Visitor visitor, Direction directionVistorArrivesFrom) {
+
+        Direction toReturn;
+        int itemsTotal=0;
+        int []moneySpentByVisitor= {0,0,0,0,0,0,0,0,0,0};
+        char yesOrNo;
+        visitor.tell("You cannot spend/earn more than 10 gold in a single Visit or visit the same section of my room twice in the same visit. You can only get 1 item per visit");
+        yesOrNo=visitor.getChoice("Would you like to go to the casino section"+yesNoDescription,yesNoArray);
+
+        if(yesOrNo=='y') {
+            lightsDimmed= askForDimLights(visitor);
+            int money=casinoVariation(visitor);
+            moneySpentByVisitor[0]=getMagnitude(money);
+            visitor.tell("I hope you enjoyed the casino part of my room. ");
+        }
+        if (ejectVisitor(moneySpentByVisitor))
+        {
+            visitor.tell("you have reached your maximum stay. Make way for others. See you soon.");
+            if(visitor.hasEqualItem(giftBag)||visitor.hasIdenticalItem(giftBag))
+            {
+                visitor.tell("Enjoy your complementary gift Bag.");
+                visitor.giveItem(giftBag);
+            }
+            toReturn=getRandomDirection(directionVistorArrivesFrom);
+            return toReturn;
+        }
+
+        int pos=getFirstNonZero(moneySpentByVisitor);
+        yesOrNo=visitor.getChoice("Would you like to go to the printer section"+yesNoDescription,yesNoArray);
+        if(yesOrNo=='y') {
+            lightsDimmed= askForDimLights(visitor);
+            int money=printing(visitor);
+            moneySpentByVisitor[pos]=getMagnitude(money);
+            visitor.tell("I hope you enjoyed the printing section of my room. ");
+        }
+        visitor.tell("You have explored the entire room. There Should be new sections next week.");
+        if(visitor.hasEqualItem(giftBag)||visitor.hasIdenticalItem(giftBag))
+        {
+            visitor.tell("Enjoy your complementary gift Bag.");
+            visitor.giveItem(giftBag);
+        }
+        toReturn=getRandomDirection(directionVistorArrivesFrom);
+        return toReturn;
+    }
+
+    public int casinoVariation(Visitor visitor){
+        visitor.tell("You have entered the Casino Section of my room/n ");
+        visitor.tell("You find yourself surrounded by bright lights and flashing colors. The sounds of slot machines and chatter fill the air, creating a lively and exciting atmosphere. ");
+        char[] optionsToChooseFrom = {'a', 'b', 'c', 'd'};
+        char userChoice = visitor.getChoice("I will offer you a choice. One of the options will give you 5 gold. The other 2 will take away 3 gold. Choose a if you wish to default and incur a 1 gold fine. Other options are b,c or d", optionsToChooseFrom);
+        int correctPosition = generateRandom((optionsToChooseFrom.length));
+        if(userChoice=='a'){
+            visitor.takeGold(1);
+            return 1;
+        }
+        else if (userChoice==optionsToChooseFrom[correctPosition]) {
+            visitor.giveGold(5);
+            return -5;
+        }
+        else {
+            visitor.takeGold(3);
+            return 3;
+        }
+    }
+    //text was generated using notion.
+    public int printing(Visitor visitor){
+        final Item printer= new Item("printer Cannon");
+        visitor.tell("You step into the printing room and are greeted by the steady hum of machinery. ");
+        visitor.tell("The room is filled with towering printing presses, each one churning out page after page of crisp, clear text and vibrant images.");
+        char yesOrNo=visitor.getChoice("Would you like to buy your own printer for 5 gold?"+yesNoDescription,yesNoArray);
+        if(yesOrNo=='y')
+        {
+            if(visitor.hasEqualItem(printer)||visitor.hasIdenticalItem(printer))
+            {
+                visitor.tell("I cannot sell you 2 printers as I'm against the hoarding of my property");
+            }
+            else {
+                if(payments(visitor,5)){
+                    visitor.giveItem(printer);
+                    return 5;
+                }
+            }
+        }
+        else{
+            yesOrNo=visitor.getChoice("For you my friend: 3 gold"+yesNoDescription,yesNoArray);
+            if(yesOrNo=='y'){
+                if(payments(visitor,3))
+                {
+                    visitor.giveItem(printer);
+                    return 3;
+                }
+            }
+        }
+        return 0;
+    }
+    public boolean ejectVisitor(int[] array) {
+        int sum = 0;
+        for (int j : array) {
+            sum += j;
+        }
+        return sum > 10;
+    }
+    public boolean payments(Visitor visitor,int goldToTake)
+    {
+        int moneyTaken=visitor.takeGold(goldToTake);
+        if(moneyTaken==goldToTake)
+        {
+            return true;
+        }
+        else {
+            visitor.giveGold(moneyTaken);
+            return false;
+        }
+    }
+    public int getFirstNonZero(int[] array) {
+        for (int j : array) {
+            if (j != 0) {
+                return j;
+            }
+        }
+        return 0; // return 0 if no non-zero element found in the array
+    }
+    public int getMagnitude(int number) {
+        return Math.abs(number);
+    }
+    public Direction getRandomDirection(Direction directionVistorArrivesFrom) {
+        int randomIndex = generateRandom(3);
+        Direction newobject=directionVistorArrivesFrom;
+        switch (randomIndex) {
+            case 0:
+                newobject = Direction.TO_NORTH;
+            case 1:
+                newobject = Direction.TO_EAST;
+            case 2:
+                newobject = Direction.TO_SOUTH;
+            default:
+                newobject = Direction.TO_WEST;
+
+        }
+        return newobject;
+
+    }
+    public int generateRandom(int max) {
+        Random rand = new Random();
+        return rand.nextInt(max - 1) + 1;
+    }
+    public boolean askForDimLights(Visitor visitor) {
+        char response = visitor.getChoice("Would you like the lights to be dimmed?"+yesNoDescription, yesNoArray);
+        return response == 'y';
+    }
+
+
+}
