@@ -8,7 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 public class GUIVisitor_ec22612 extends JFrame implements Visitor{
+
+    static enum Semaphore {WAITING,HALT,SEND};
+    static enum IO {INPUT, OUTPUT}
 
     private int gold;
     private ArrayList<Item> items;
@@ -32,9 +36,13 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
     JScrollPane ScrollOutput;
     JTextArea Outputarea;
 
+    JButton NextOutput;
+
     JPanel Input_panel;
     JLabel Input;
     JPanel Input_buttons;
+
+    int Input_Index;
 
 
 
@@ -44,6 +52,14 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
 
 
     JButton Exit_button;
+
+
+    Semaphore OutputSemaphore;
+
+    Semaphore InputSemaphore;
+
+
+    IO IOcheck;
 
 
 
@@ -85,22 +101,55 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         Itempanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         Itempanel.add(Itemlabel);
         Itempanel.add(scroll_Items_area);
+
+
+
+        IOpanel = new JPanel();
+        IOpanel.setLayout(new BoxLayout(IOpanel, BoxLayout.Y_AXIS));
+
+        Output_panel = new JPanel();
+        Output = new JLabel("Output");
+        Output_panel.setLayout(new BoxLayout(Output_panel, BoxLayout.Y_AXIS));
+
+        Outputarea = new JTextArea();
+        Outputarea.setFont(new Font("Serif",Font.PLAIN,20));
+        Outputarea.setLineWrap(true);
+        ScrollOutput = new JScrollPane(Outputarea);
+        NextOutput = new JButton("Next");
+
+        Output_panel.add(Output);
+        Output_panel.add(ScrollOutput);
+        Output_panel.add(NextOutput);
+        OutputSemaphore = Semaphore.WAITING;
+
+        NextOutput.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        OutputSemaphore = Semaphore.WAITING;
+                        JScrollBar vertical = ScrollOutput.getVerticalScrollBar();
+                        vertical.setValue( vertical.getMaximum() );
+                    }
+                }
+        );
+
+        Input_panel = new JPanel();
+        Input = new JLabel("Input");
+        Input_buttons = new JPanel();
+        Input_panel.setLayout(new BoxLayout(Input_panel, BoxLayout.Y_AXIS));
+        Input_panel.setVisible(false);
+        Input_panel.add(Input);
+        Input_panel.add(Input_buttons);
+        Input_Index = 0;
+        InputSemaphore = Semaphore.WAITING;
+
         Exit_button = new JButton("Exit");
 
         ExitPanel = new JPanel();
 
         panel.add(label);
 
-        IOpanel = new JPanel();
 
-        Output_panel = new JPanel();
-        Output = new JLabel("Output");
-        ScrollOutput = new JScrollPane();
-        Outputarea = new JTextArea();
-
-        Input_panel = new JPanel();
-        Input = new JLabel("Input");
-        Input_buttons = new JPanel();
 
         panel.add(Goldpanel);
         panel.add(Itempanel);
@@ -109,6 +158,7 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                System.exit(0);
             }
         });
 
@@ -118,9 +168,14 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         IOpanel.setPreferredSize(new Dimension(1000,200));
         IOpanel.add(new JLabel("IO"));
 
+
+        IOpanel.add(Output_panel);
+        IOpanel.add(Input_panel);
         panel.add(IOpanel);
 
         panel.add(ExitPanel);
+
+        IOcheck = IO.OUTPUT;
 
 
 
@@ -158,16 +213,43 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
     }
 
     public void tell(String messageForVisitor) {
+        IOcheck = IO.OUTPUT;
         setVisible(true);
         panel.setVisible(true);
-       JOptionPane.showMessageDialog(IOpanel,messageForVisitor);
+
+        while (OutputSemaphore == Semaphore.WAITING){
+            Outputarea.append(messageForVisitor + "\n" );
+            OutputSemaphore = Semaphore.HALT;
+        }
+
+        while(OutputSemaphore == Semaphore.HALT){
+            Output_panel.repaint();
+        }
+
 
 
 
     }
 
+    class InputActionListener implements ActionListener{
+
+        int index;
+
+        InputActionListener(int index){
+            this.index = index;
+
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           Input_Index = index;
+           InputSemaphore = Semaphore.SEND;
+        }
+
+
+    }
+
     public char getChoice(String descriptioOfChoices, char[] arrayOfPossibleChoices) {
-        Character[] possibleChoiceoObj = new Character[arrayOfPossibleChoices.length];
+        /*Character[] possibleChoiceoObj = new Character[arrayOfPossibleChoices.length];
 
         for (int i = 0; i <arrayOfPossibleChoices.length; i++){
             possibleChoiceoObj[i] = Character.valueOf(arrayOfPossibleChoices[i]);
@@ -180,10 +262,36 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
        if(index == -1){
            index = 0;
            JOptionPane.showMessageDialog(IOpanel,"Last option you didn't answer, the answer:  " + arrayOfPossibleChoices[index] +" was automatically selected for you"  );
-       }
+       }*/
+
+        tell(descriptioOfChoices);
+        NextOutput.doClick();
+        NextOutput.setEnabled(false);
+
+        Input_panel.setVisible(true);
+        for (int i = 0; i<arrayOfPossibleChoices.length; i++){
+
+            JButton new_button = new JButton(String.valueOf(arrayOfPossibleChoices[i]));
+
+            new_button.addActionListener(new InputActionListener(i));
+            Input_buttons.add(new_button);
+            Input_panel.revalidate();
+
+        }
+
+        while (InputSemaphore != Semaphore.SEND){
+            Input_panel.repaint();
+        }
+
+        InputSemaphore = Semaphore.WAITING;
+
+        Input_buttons.removeAll();
+        NextOutput.setEnabled(true);
+        Input_panel.setVisible(false);
 
 
-        return arrayOfPossibleChoices[index];
+
+        return arrayOfPossibleChoices[Input_Index];
     }
 
     public boolean giveItem(Item itemGivenToVisitor) {
