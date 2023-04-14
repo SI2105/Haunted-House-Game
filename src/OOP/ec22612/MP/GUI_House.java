@@ -37,6 +37,17 @@ public class GUI_House extends House{
         Populate_House();
 
     }
+
+    GUI_House(int room_size){
+        inhouse = true;
+        x=0;
+        y=0;
+        RoomSize = room_size;
+        Rooms = new ArrayList<ArrayList<Room>>();
+
+        Populate_House();
+
+    }
     public Direction visit(Visitor v, Direction d) {
 
 
@@ -89,12 +100,10 @@ public class GUI_House extends House{
                 x-= 1;
             }
 
-
-
         }
 
-
         v.tell("You have left the House");
+
         return d;
     }
 

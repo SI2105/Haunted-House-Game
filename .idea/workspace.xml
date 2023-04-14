@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="Transferring A8 code">
+    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="GUI Visitor updated to not use JOPtionpanes for tell and getChoice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/MP_ec22612.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/MP_ec22612.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,19 +34,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/sakib/IdeaProjects/MP-ec22612/src/OOP/ec22612/MP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sakib/IdeaProjects/MP-ec22612/src/OOP/ec22612/MP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sakib\IdeaProjects\MP-ec22612\src\OOP\ec22612\MP" />
@@ -59,7 +61,8 @@
       <option name="presentableId" value="Default" />
       <updated>1681375525767</updated>
       <workItem from="1681375527078" duration="162000" />
-      <workItem from="1681375718871" duration="6776000" />
+      <workItem from="1681375718871" duration="6821000" />
+      <workItem from="1681462369618" duration="5751000" />
     </task>
     <task id="LOCAL-00001" summary="Transferring A8 code">
       <created>1681376499376</created>
@@ -68,7 +71,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681376499376</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="GUI Visitor updated to not use JOPtionpanes for tell and getChoice">
+      <created>1681382659045</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681382659045</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,6 +86,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Transferring A8 code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transferring A8 code" />
+    <MESSAGE value="GUI Visitor updated to not use JOPtionpanes for tell and getChoice" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI Visitor updated to not use JOPtionpanes for tell and getChoice" />
   </component>
 </project>

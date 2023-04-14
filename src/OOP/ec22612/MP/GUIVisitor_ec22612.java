@@ -80,10 +80,14 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         label = new JLabel("Welcome to the Haunted House");
+        label.setFont(new Font(Font.SERIF,Font.BOLD,30));
 
         Goldpanel = new JPanel();
         Goldlabel = new JLabel("Your Gold: ");
         GoldValue = new JLabel(Integer.toString(gold));
+
+        Goldlabel.setFont(new Font(Font.SERIF,Font.BOLD,25));
+        GoldValue.setFont(new Font(Font.SERIF,Font.BOLD,25));
 
 
         Goldpanel.setLayout(new FlowLayout());
@@ -249,20 +253,6 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
     }
 
     public char getChoice(String descriptioOfChoices, char[] arrayOfPossibleChoices) {
-        /*Character[] possibleChoiceoObj = new Character[arrayOfPossibleChoices.length];
-
-        for (int i = 0; i <arrayOfPossibleChoices.length; i++){
-            possibleChoiceoObj[i] = Character.valueOf(arrayOfPossibleChoices[i]);
-        }
-
-       int index = JOptionPane.showOptionDialog(IOpanel,descriptioOfChoices,"Make a Choice"
-       ,JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,possibleChoiceoObj
-       ,possibleChoiceoObj[0]);
-
-       if(index == -1){
-           index = 0;
-           JOptionPane.showMessageDialog(IOpanel,"Last option you didn't answer, the answer:  " + arrayOfPossibleChoices[index] +" was automatically selected for you"  );
-       }*/
 
         tell(descriptioOfChoices);
         NextOutput.doClick();
