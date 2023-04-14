@@ -1,6 +1,7 @@
 package OOP.ec22612.MP;
 
 import OOP.ec22612.MP.contributions.*;
+import jdk.jfr.Event;
 
 import javax.swing.*;
 import java.awt.*;
@@ -324,6 +325,14 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
 
     public void giveGold(int numberOfPiecesToGive) {
         tell("You are given "+numberOfPiecesToGive+" gold pieces.");
+
+        Timer timer = new Timer(5000, event -> {
+            Goldpanel.add(new JLabel("+" + numberOfPiecesToGive));
+            Goldpanel.revalidate();
+        });
+        timer.setRepeats(false);
+        timer.start();
+        Goldpanel.revalidate();
 
         gold += numberOfPiecesToGive;
 

@@ -56,7 +56,6 @@ public class GUI_House extends House{
         while(inhouse){
 
 
-
             d = Rooms.get(x).get(y).visit(v,d);
 
 
