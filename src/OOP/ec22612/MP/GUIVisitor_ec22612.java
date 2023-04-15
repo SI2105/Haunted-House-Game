@@ -102,8 +102,8 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         Items_area.setPreferredSize(new Dimension(200,300));
         JScrollPane scroll_Items_area = new JScrollPane(Items_area);
 
-        Itempanel.setLayout(new FlowLayout());
-        Itempanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        Itempanel.setLayout(new BoxLayout(Itempanel, BoxLayout.Y_AXIS));
+
         Itempanel.add(Itemlabel);
         Itempanel.add(scroll_Items_area);
 
@@ -287,21 +287,30 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
 
     public boolean giveItem(Item itemGivenToVisitor) {
 
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        JOptionPane.showConfirmDialog(IOpanel,"You are being offered " + itemGivenToVisitor, "Item Offer", dialogButton );
 
-        if(dialogButton == JOptionPane.YES_OPTION){
+         char choice = getChoice("You are being offered " + itemGivenToVisitor,new char []{'y','n'});
+
+        if(choice == 'y'){
             items.add(itemGivenToVisitor);
             update_items_area(itemGivenToVisitor);
+            JLabel new_item_label = new JLabel(itemGivenToVisitor + "Has been added to your inventory");
+            new_item_label.setFont(new Font("Serif", Font.BOLD,18));
+            Itempanel.add(new_item_label);
 
-
-
+            Timer timer = new Timer(4000, event -> {
+                Itempanel.remove(new_item_label);
+                Itempanel.revalidate();
+                Itempanel.repaint();
+            });
+            timer.setRepeats(false);
+            timer.start();
+            Itempanel.revalidate();
             return true;
         }
-        else{
+        else {
             return false;
-
         }
+
 
     }
 
