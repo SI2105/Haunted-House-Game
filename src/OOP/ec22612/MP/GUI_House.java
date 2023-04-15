@@ -14,8 +14,7 @@ public class GUI_House extends House{
 
     GUI_House(String room_size){
         inhouse = true;
-        x=0;
-        y=0;
+
         if(room_size.equals("big")){
 
             RoomSize = 6;
@@ -32,6 +31,9 @@ public class GUI_House extends House{
             RoomSize = 2;
         }
 
+        x=randomInt(RoomSize);
+        y=randomInt(RoomSize);
+
         Rooms = new ArrayList<ArrayList<Room>>();
 
         Populate_House();
@@ -40,9 +42,10 @@ public class GUI_House extends House{
 
     GUI_House(int room_size){
         inhouse = true;
-        x=0;
-        y=0;
+
         RoomSize = room_size;
+        x=randomInt(RoomSize);
+        y=randomInt(RoomSize);
         Rooms = new ArrayList<ArrayList<Room>>();
 
         Populate_House();
@@ -53,8 +56,9 @@ public class GUI_House extends House{
 
 
 
-        while(inhouse){
 
+
+        while(inhouse){
 
             d = Rooms.get(x).get(y).visit(v,d);
 

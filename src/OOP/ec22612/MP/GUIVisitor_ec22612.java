@@ -287,7 +287,7 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
     public boolean giveItem(Item itemGivenToVisitor) {
 
 
-         char choice = getChoice("You are being offered " + itemGivenToVisitor,new char []{'y','n'});
+         char choice = getChoice("You are being offered " + itemGivenToVisitor + "\n Want to pick it up?",new char []{'y','n'});
 
         if(choice == 'y'){
             items.add(itemGivenToVisitor);
@@ -335,7 +335,7 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         tell("You are given "+numberOfPiecesToGive+" gold pieces.");
 
         JLabel givegoldlabel = new JLabel("+" + numberOfPiecesToGive);
-        givegoldlabel.setFont(new Font("Serif",Font.BOLD,15));
+        givegoldlabel.setFont(new Font("Serif",Font.BOLD,18));
         givegoldlabel.setForeground(new Color(197, 179, 88));
         Goldpanel.add(givegoldlabel);
 
@@ -370,7 +370,7 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         tell("You will have "+ t + " gold taken away from you");
 
         JLabel takegoldlabel = new JLabel("-" + t);
-        takegoldlabel.setFont(new Font("Serif",Font.BOLD,15));
+        takegoldlabel.setFont(new Font("Serif",Font.BOLD,18));
 
         takegoldlabel.setForeground(new Color(255,0,0));
         Goldpanel.add(takegoldlabel);
