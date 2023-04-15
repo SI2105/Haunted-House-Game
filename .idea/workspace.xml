@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="GUI Visitor updated to not use JOPtionpanes for tell and getChoice">
+    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="Updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" afterDir="false" />
@@ -26,6 +26,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2OMflvTGvBQNe4wsnsa2GSt9o8u" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -62,6 +65,8 @@
       <workItem from="1681375527078" duration="162000" />
       <workItem from="1681375718871" duration="6821000" />
       <workItem from="1681462369618" duration="8830000" />
+      <workItem from="1681502001531" duration="121000" />
+      <workItem from="1681549437346" duration="2107000" />
     </task>
     <task id="LOCAL-00001" summary="Transferring A8 code">
       <created>1681376499376</created>
@@ -84,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681481594094</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated">
+      <created>1681502034692</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681502034692</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +105,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Transferring A8 code" />
     <MESSAGE value="GUI Visitor updated to not use JOPtionpanes for tell and getChoice" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI Visitor updated to not use JOPtionpanes for tell and getChoice" />
+    <MESSAGE value="Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated" />
   </component>
 </project>

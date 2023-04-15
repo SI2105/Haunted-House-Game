@@ -117,6 +117,7 @@ public class GUI_House extends House{
                 Rooms.get(i).add(rmiterator.next());
             }
         }
+        Rooms.get(0).set(0,Contributions.newRoomByUsername("ec22612"));
 
     }
 

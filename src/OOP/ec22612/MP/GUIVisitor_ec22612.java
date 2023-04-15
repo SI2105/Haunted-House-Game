@@ -326,9 +326,15 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
     public void giveGold(int numberOfPiecesToGive) {
         tell("You are given "+numberOfPiecesToGive+" gold pieces.");
 
-        Timer timer = new Timer(5000, event -> {
-            Goldpanel.add(new JLabel("+" + numberOfPiecesToGive));
+        JLabel givegoldlabel = new JLabel("+" + numberOfPiecesToGive);
+        givegoldlabel.setFont(new Font("Serif",Font.BOLD,15));
+        givegoldlabel.setForeground(new Color(197, 179, 88));
+        Goldpanel.add(givegoldlabel);
+
+        Timer timer = new Timer(4000, event -> {
+            Goldpanel.remove(givegoldlabel);
             Goldpanel.revalidate();
+            Goldpanel.repaint();
         });
         timer.setRepeats(false);
         timer.start();
