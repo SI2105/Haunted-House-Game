@@ -368,6 +368,21 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
         }
 
         tell("You will have "+ t + " gold taken away from you");
+
+        JLabel takegoldlabel = new JLabel("-" + t);
+        takegoldlabel.setFont(new Font("Serif",Font.BOLD,15));
+
+        takegoldlabel.setForeground(new Color(255,0,0));
+        Goldpanel.add(takegoldlabel);
+
+        Timer timer = new Timer(4000, event -> {
+            Goldpanel.remove(takegoldlabel);
+            Goldpanel.revalidate();
+            Goldpanel.repaint();
+        });
+        timer.setRepeats(false);
+        timer.start();
+        Goldpanel.revalidate();
         gold -= t;
         update_gold();
 

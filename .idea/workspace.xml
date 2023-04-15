@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="A timed prompt added to show new the has been item added.">
+    <list default="true" id="cc000afd-7d95-49f0-b005-0d11e1614517" name="Changes" comment="Updated House fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUI_House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOP/ec22612/MP/GUIVisitor_ec22612.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +65,7 @@
       <workItem from="1681375718871" duration="6821000" />
       <workItem from="1681462369618" duration="8830000" />
       <workItem from="1681502001531" duration="121000" />
-      <workItem from="1681549437346" duration="5184000" />
+      <workItem from="1681549437346" duration="6275000" />
     </task>
     <task id="LOCAL-00001" summary="Transferring A8 code">
       <created>1681376499376</created>
@@ -116,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681555366694</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated House fixed">
+      <created>1681556505324</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681556505324</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +135,7 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="A timed prompt added to show how much gold has been added" />
     <MESSAGE value="A timed prompt added to show new the has been item added." />
-    <option name="LAST_COMMIT_MESSAGE" value="A timed prompt added to show new the has been item added." />
+    <MESSAGE value="Updated House fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated House fixed" />
   </component>
 </project>
