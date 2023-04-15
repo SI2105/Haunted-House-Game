@@ -17,7 +17,6 @@ public class GUIVisitor_ec22612 extends JFrame implements Visitor{
 
     private int gold;
     private ArrayList<Item> items;
-    private int next;
     JPanel panel;
     JLabel label;
 
